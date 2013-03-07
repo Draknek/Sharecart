@@ -16,6 +16,7 @@ package
 		
 		public override function init (): void
 		{
+			Editor.init();
 			super.init();
 		}
 		

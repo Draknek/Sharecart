@@ -20,9 +20,6 @@ package
 			x = _x;
 			y = _y;
 			
-			x = 28;
-			y = 28;
-			
 			width = height = G.TW;
 			
 			var image:Image = new Image(Gfx);
@@ -53,6 +50,11 @@ package
 			FP.rect.height = height;
 			
 			b.fillRect(FP.rect, G.DITCH_COLOR);
+			
+			var ix:int = x / G.TW;
+			var iy:int = y / G.TW;
+			
+			Level(world).sandMask.setTile(ix, iy, false);
 		}
 	}
 }
