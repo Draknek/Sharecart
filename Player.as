@@ -50,14 +50,27 @@ package
 			var toX:int = x+moveX;
 			var toY:int = y+moveY;
 			
+			if (toX < 0 || toY < 0 || toX >= FP.width || toY >= FP.height) {
+				return;
+			}
+			
 			if (collideTypes(["sand", "solid", "oasis"], toX, toY)) {
 				return;
 			}
 			
 			var crate:Crate = collide("crate", toX, toY) as Crate;
 			
-			if (crate && crate.collideTypes(["crate", "solid", "oasis"], crate.x + moveX, crate.y + moveY)) {
-				return;
+			if (crate) {
+				crate.toX = crate.x + moveX;
+				crate.toY = crate.y + moveY;
+				
+				if (crate.toX < 0 || crate.toY < 0 || crate.toX >= FP.width || crate.toY >= FP.height) {
+					return;
+				}
+				
+				if (crate.collideTypes(["crate", "solid", "oasis"], crate.toX, crate.toY)) {
+					return;
+				}
 			}
 			
 			FP.tween(this, {x: toX, y: toY}, tweenTime, doneMoving);

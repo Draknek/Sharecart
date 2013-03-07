@@ -15,6 +15,9 @@ package
 		public var vx: Number = 0;
 		public var vy: Number = 0;
 		
+		public var toX:int;
+		public var toY:int;
+		
 		public function Crate (_x:Number = 0, _y:Number = 0)
 		{
 			x = _x;
